@@ -3,7 +3,7 @@ import img from "../../assets/images/login/login.svg";
 import useAuth from "./../../customHook/useAuth";
 
 const SignUp = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const handleSignUP = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,8 +15,14 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        form.reset();
+        updateUserProfile(name, photo)
+          .then(() => {
+            console.log(user);
+            form.reset();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
