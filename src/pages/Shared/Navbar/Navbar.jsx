@@ -1,23 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../../assets/logo.svg";
 
 const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a>Home</a>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <a>About</a>
+        <NavLink to="/about">About</NavLink>
       </li>
       <li>
-        <a>Services</a>
+        <NavLink to="/services">Services</NavLink>
       </li>
       <li>
-        <a>Blog</a>
+        <NavLink to="/blog">Blog</NavLink>
       </li>
       <li>
-        <a>Contact</a>
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/signup">Signup</NavLink>
       </li>
     </>
   );
