@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 
-const Login = () => {
-  const handleLogin = (event) => {
+const SignUp = () => {
+  const handleSignUP = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -16,8 +16,32 @@ const Login = () => {
           <img src={img} alt="" />
         </div>
         <div className="card shrink-0 w-full md:w-1/2 shadow-2xl bg-base-100">
-          <form onSubmit={handleLogin} className="card-body">
-            <h1 className="text-5xl font-bold text-center">Login</h1>
+          <form onSubmit={handleSignUP} className="card-body">
+            <h1 className="text-5xl font-bold text-center">Sign Up</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Phot URL</span>
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                placeholder="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -49,29 +73,18 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-primary">
-                Login
+                Sign Up
               </button>
             </div>
           </form>
-          <div className="space-y-5">
-            <div className="divider"> Or Sign in with</div>
 
-            <div className="grid grid-flow-col gap-4 px-6">
-              <button className="btn btn-outline btn-info">
-                Sign in with Google
-              </button>
-              <button className="btn btn-outline btn-info">
-                Sign in with Github
-              </button>
-            </div>
-            <div className="pb-6">
-              <p className="text-center">
-                New to Car Doctor?{" "}
-                <Link className="text-orange-600 font-bold" to="/signup">
-                  Sign Up
-                </Link>
-              </p>
-            </div>
+          <div className="pb-6">
+            <p className="text-center">
+              Already have an account?{" "}
+              <Link className="text-orange-600 font-bold" to="/login">
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>
@@ -79,4 +92,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
