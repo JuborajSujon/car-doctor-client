@@ -1,21 +1,34 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
+import useAuth from "./../../customHook/useAuth";
 
 const SignUp = () => {
+  const { createUser } = useAuth();
   const handleSignUP = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
+    const photo = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="hero min-h-[70vh]">
       <div className="hero-content flex-col lg:flex-row px-4 gap-6 md:gap-10">
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-4/5 lg:w-1/2">
           <img src={img} alt="" />
         </div>
-        <div className="card shrink-0 w-full md:w-1/2 shadow-2xl bg-base-100">
+        <div className="card shrink-0 w-full md:w-4/5 lg:w-1/2 shadow-2xl bg-base-100">
           <form onSubmit={handleSignUP} className="card-body">
             <h1 className="text-5xl font-bold text-center">Sign Up</h1>
             <div className="form-control">
