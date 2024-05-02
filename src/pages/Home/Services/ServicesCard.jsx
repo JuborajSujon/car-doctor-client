@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const ServicesCard = ({ service }) => {
-  const { title, img, price } = service;
+  const { _id, title, img, price } = service;
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
@@ -9,7 +11,9 @@ const ServicesCard = ({ service }) => {
         <h2 className="card-title">{title}</h2>
         <p>Price : ${price}</p>
         <div className="card-actions flex  items-center justify-between">
-          <button className="btn btn-error btn-outline">Buy Now</button>
+          <Link to={`/checkout/${_id}`} className="btn btn-error btn-outline">
+            Book Now
+          </Link>
           <button className="btn btn-square btn-outline">
             <svg
               xmlns="http://www.w3.org/2000/svg"

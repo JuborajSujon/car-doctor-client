@@ -17,7 +17,7 @@ const SignUp = () => {
         const user = result.user;
         updateUserProfile(name, photo)
           .then(() => {
-            console.log(user);
+            // console.log(user);
             form.reset();
           })
           .catch((error) => {
