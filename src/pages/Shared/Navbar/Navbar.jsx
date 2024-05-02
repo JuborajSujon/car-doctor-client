@@ -19,11 +19,10 @@ const Navbar = () => {
         <NavLink to="/blog">Blog</NavLink>
       </li>
       <li>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/booking">My Booking</NavLink>
       </li>
       {user?.email ? (
         <>
-          <li>{user?.displayName}</li>
           <button onClick={userSignOut}>Logout</button>
         </>
       ) : (
