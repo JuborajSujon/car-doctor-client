@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../../assets/logo.svg";
+import useAuth from "../../../customHook/useAuth";
 
 const Navbar = () => {
+  const { userSignOut, user } = useAuth();
   const navItems = (
     <>
       <li>
@@ -19,12 +21,21 @@ const Navbar = () => {
       <li>
         <NavLink to="/contact">Contact</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/signup">Signup</NavLink>
-      </li>
+      {user?.email ? (
+        <>
+          <li>{user?.displayName}</li>
+          <button onClick={userSignOut}>Logout</button>
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/signup">Signup</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -48,7 +59,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            className="menu menu-sm dropdown-content mt-3 z-30 p-2 shadow bg-base-100 rounded-box w-52">
             {navItems}
           </ul>
         </div>
