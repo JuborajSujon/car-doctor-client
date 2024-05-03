@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 import useAuth from "../../customHook/useAuth";
 
 const Login = () => {
   const { signInUser } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,6 +15,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);
+        navigate(location?.state ? location?.state : "/");
+
         form.reset();
       })
       .catch((error) => {
